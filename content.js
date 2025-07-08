@@ -8,7 +8,7 @@ const siteContent = {
     // HERO SECTION (Top of homepage)
     // ===========================
     hero: {
-        name: "Ethan MacLelland",
+        name: "Ethan M",
         subtitle: "Engineer | Serial Entrepreneur | Problem Solver", 
         location: "📍 Boston, Massachusetts",
         description: "I'm the kind of mechanical engineer who actually enjoys when people say 'that's impossible'. Give me a complex design challenge or a property renovation that makes contractors shake their heads, and I'm in my element. Currently transforming historic buildings and building real estate value through strategic BRRR investments across my growing portfolio.",
@@ -201,10 +201,10 @@ const siteContent = {
     // ===========================
     footer: {
         socialLinks: [
-            {href: "https://www.linkedin.com/in/emaclelland/", text: "LinkedIn"},
+            {href: "https://www.linkedin.com/", text: "LinkedIn"},
             {href: "mailto:macdevelopmentco@gmail.com", text: "Email"}
         ],
-        copyright: "© 2025 Ethan MacLelland. All rights reserved."
+        copyright: "© 2025 Ethan M. All rights reserved."
     },
 
     // ===========================
