@@ -77,7 +77,7 @@ const siteContent = {
         vinton: {
             title: "The Vinton",
             date: "2019 - Present",
-            description: "While searching for off-campus housing at UConn, my Zillow filters switched from \"For Rent\" to \"For Sale.\" This Victorian-era Tudor became my first property and the foundation of MAC Development Co. Completely transformed from a distressed property into a profitable 6-bedroom, 3-bathroom student rental.",
+            description: "While searching for off-campus housing at UConn, my Zillow filters switched from \"For Rent\" to \"For Sale.\" This Victorian-era Tudor became my first property and the foundation of MAC Development Co. Completely transformed from a distressed property into a profitable student rental.",
             tags: ["Victorian Restoration", "Portfolio Foundation"],
             galleryButton: "📸 View Transformation Gallery"
         },
