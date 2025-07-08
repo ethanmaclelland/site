@@ -15,7 +15,7 @@ const siteContent = {
         
         // Stats that appear below description
         stats: {
-            properties: {number: "4+", label: "Properties Renovated"},
+            properties: {number: "5+", label: "Properties Renovated"},
             vacancy: {number: "0%", label: "Vacancy Rate"}, 
             projects: {number: "$2M+", label: "Projects Managed"}
         },
