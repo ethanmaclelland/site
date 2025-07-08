@@ -2,7 +2,6 @@
 // =======================================================
 // Edit this file to change all text on your website
 // Just change the text between the quotes and save!
-// No HTML knowledge required - it's that simple!
 
 const siteContent = {
     // ===========================
@@ -11,12 +10,12 @@ const siteContent = {
     hero: {
         name: "Ethan MacLelland",
         subtitle: "Engineer | Serial Entrepreneur | Problem Solver", 
-        location: "📍 Brookline, Massachusetts",
+        location: "📍 Boston, Massachusetts",
         description: "I'm the kind of mechanical engineer who actually enjoys when people say 'that's impossible'. Give me a complex design challenge or a property renovation that makes contractors shake their heads, and I'm in my element. Currently transforming historic buildings and building real estate value through strategic BRRR investments across my growing portfolio.",
         
         // Stats that appear below description
         stats: {
-            properties: {number: "5+", label: "Properties Renovated"},
+            properties: {number: "4+", label: "Properties Renovated"},
             vacancy: {number: "0%", label: "Vacancy Rate"}, 
             projects: {number: "$2M+", label: "Projects Managed"}
         },
@@ -38,9 +37,9 @@ const siteContent = {
             
             "My entrepreneurial journey started early - I was buying broken iPods, fixing them up, and flipping them for profit on my family room floor. But real estate captured my attention during my sophomore year at UConn when my Zillow search filters switched from \"For Rent\" to \"For Sale.\" That's how I discovered The Vinton, a Victorian Tudor that became my first investment property and the foundation of MAC Development Co.",
             
-            "Since then, I've dabbled in everything from iOS apps to e-commerce stores to landscaping businesses, and now I run MAC Development Co., specializing in value-add real estate investments using the BRRR strategy. I've also gained valuable field engineering experience managing critical MBTA infrastructure projects, which taught me invaluable lessons about working under pressure and coordinating complex operations.",
+            "I've dabbled in everything from iOS apps to e-commerce stores to landscaping businesses, and now I run MAC Development Co., specializing in value-add real estate investments using the BRRR strategy. I've also gained valuable field engineering experience managing critical MBTA infrastructure projects, which taught me invaluable lessons about working under pressure and coordinating complex operations.",
             
-            "What drives me isn't just building things that work — it's building things that work better than anyone thought possible. I actively share insights about engineering and entrepreneurship on LinkedIn, reaching thousands of professionals who follow my project updates and industry perspectives."
+            "What drives me isn't just building things that work — it's building things that work better than anyone thought possible."
         ]
     },
 
@@ -76,42 +75,42 @@ const siteContent = {
         
         // Project descriptions (keep these updated with your latest work!)
         vinton: {
-            title: "The Vinton: My First BRRR Success Story",
+            title: "The Vinton",
             date: "2019 - Present",
             description: "While searching for off-campus housing at UConn, my Zillow filters switched from \"For Rent\" to \"For Sale.\" This Victorian-era Tudor became my first property and the foundation of MAC Development Co. Completely transformed from a distressed property into a profitable 6-bedroom, 3-bathroom student rental.",
-            tags: ["BRRR Strategy", "Victorian Restoration", "Student Housing", "Portfolio Foundation"],
-            galleryButton: "📸 View Before & After Gallery"
-        },
-        
-        church: {
-            title: "Historic Stone Church Transformation", 
-            date: "2025 - Present",
-            description: "My most ambitious project yet - converting a beautiful 1935 stone church building that served the community until 2008 into a modern mixed-use property. This project represents the evolution of my expertise from residential renovations to complex adaptive reuse developments.",
-            tags: ["Historic Preservation", "Adaptive Reuse", "Stone Restoration", "Mixed-Use Development"],
-            galleryButton: "📸 View Renovation Progress"
-        },
-        
-        trap: {
-            title: "The Trap: Strategic Value-Add Renovation",
-            date: "2022 - 2023", 
-            description: "A strategic value-add acquisition that exemplifies the BRRR methodology in action. This property required comprehensive systems upgrades and interior renovations to unlock its rental potential and maximize returns on investment.",
-            tags: ["Value Engineering", "Systems Upgrade", "ROI Optimization", "Market Positioning"],
+            tags: ["Victorian Restoration", "Portfolio Foundation"],
             galleryButton: "📸 View Transformation Gallery"
         },
         
+        trap: {
+            title: "The Trap",
+            date: "2022 - 2023", 
+            description: "A strategic value-add acquisition that exemplifies the BRRR methodology in action. This property required complete systems and interior renovations to unlock its rental potential and maximize returns on investment.",
+            tags: ["Complete Renovation", "Systems Upgrade", "ROI Optimization"],
+            galleryButton: "📸 View Transformation Gallery"
+        }, 
+                
         poolhouse: {
-            title: "Pool House: Premium Property Enhancement",
+            title: "The Pool House",
             date: "2023 - 2024",
-            description: "A premium property renovation focusing on luxury amenities and high-end finishes. This project showcased advanced project management skills while coordinating pool restoration, landscaping, and interior design elements to create a premium rental offering.",
-            tags: ["Luxury Renovation", "Pool Restoration", "Landscape Design", "Premium Positioning"], 
-            galleryButton: "📸 View Luxury Transformation"
+            description: "A brutalist-styled house built in the 1970s featuring a large inground pool near UConn's campus.",
+            tags: ["Brutalist-style", "Premium Positioning"], 
+            galleryButton: "📸 View Transformation Gallery"
+        },
+        
+        church: {
+            title: "St. Joseph's Church", 
+            date: "2025 - Present",
+            description: "My most ambitious project yet - converting a beautiful 1935 stone church building that served the community until 2008 into a modern mixed-use property. This project represents the evolution of my expertise from residential renovations to complex adaptive reuse developments.",
+            tags: ["Historic Preservation", "Adaptive Reuse", "Mixed-Use Development"],
+            galleryButton: "📸 View Renovation Progress"
         },
         
         mbta: {
             title: "MBTA Field Engineering Projects",
             date: "2024 - 2025 | SPS New England",
-            description: "Led critical field engineering operations across multiple MBTA lines during high-stakes shutdown windows. Managed complex track improvement projects, coordinated material logistics, and ensured seamless execution under extreme time constraints across Orange, Green, and other transit lines.",
-            tags: ["Orange Line TIP", "Green Line Shutdown", "Track Improvements", "Project Coordination"],
+            description: "Managed critical field engineering operations across multiple MBTA lines during high-stakes shutdown windows. Managed complex track improvement projects, coordinated material logistics, and ensured seamless execution under extreme time constraints across Orange, Green, and Red transit lines.",
+            tags: ["Track Improvement Program", "Project Management"],
             galleryButton: "📸 View Project Gallery"
         }
     },
@@ -203,7 +202,7 @@ const siteContent = {
     footer: {
         socialLinks: [
             {href: "https://www.linkedin.com/in/emaclelland/", text: "LinkedIn"},
-            {href: "mailto:ethan@macdevelopmentco.com", text: "Email"}
+            {href: "mailto:macdevelopmentco@gmail.com", text: "Email"}
         ],
         copyright: "© 2025 Ethan MacLelland. All rights reserved."
     },
