@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Test - Ethan MacLelland</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .test-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .test-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .test-btn:hover {
+            transform: translateY(-2px);
+        }
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        .status {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖼️ Gallery System Test</h1>
+        
+        <div class="info-box">
+            <h3>How to Use This Test:</h3>
+            <ol>
+                <li><strong>Check Status:</strong> Click "Check Gallery System" to verify everything is working</li>
+                <li><strong>Test Galleries:</strong> Click any project button to test the gallery modal</li>
+                <li><strong>Expected Behavior:</strong> Modal should open with placeholder images (since real images aren't uploaded yet)</li>
+                <li><strong>When to Upload Images:</strong> Once galleries open successfully, you can upload your real images</li>
+            </ol>
+        </div>
+
+        <button class="test-btn" onclick="checkGallerySystem()" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+            🔍 Check Gallery System Status
+        </button>
+
+        <div id="statusResult"></div>
+
+        <h3>Test Individual Galleries:</h3>
+        <div class="test-buttons">
+            <button class="test-btn" onclick="testGallery('vinton')">
+                🏰 Test Vinton Gallery
+            </button>
+            <button class="test-btn" onclick="testGallery('church')">
+                ⛪ Test Church Gallery
+            </button>
+            <button class="test-btn" onclick="testGallery('trap')">
+                🏡 Test Trap Gallery
+            </button>
+            <button class="test-btn" onclick="testGallery('poolhouse')">
+                🏊 Test Pool House Gallery
+            </button>
+            <button class="test-btn" onclick="testGallery('mbta')">
+                🚇 Test MBTA Gallery
+            </button>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Next Steps:</h3>
+            <p><strong>If galleries work:</strong> Upload your images following the file structure in the README</p>
+            <p><strong>If galleries don't work:</strong> Check the browser console (F12) for error messages</p>
+            <p><strong>Need help?</strong> Look for red error messages in the status check above</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📁 Required Image Structure:</h3>
+            <pre style="background: #f8f9fa; padding: 1rem; border-radius: 5px; overflow-x: auto;">
+images/portfolio/
+├── vinton/
+│   ├── exterior-before-1.jpg
+│   ├── exterior-after-1.jpg
+│   ├── kitchen-before-1.jpg
+│   ├── kitchen-after-1.jpg
+│   └── ... (5 pairs total)
+├── church/
+│   ├── exterior-before-1.jpg
+│   ├── exterior-after-1.jpg
+│   └── ... (4 pairs total)
+└── ... (other projects)
+            </pre>
+        </div>
+    </div>
+
+    <!-- Copy the gallery modal from main site -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <h3 id="galleryTitle">Project Gallery</h3>
+                <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            </div>
+            <div class="gallery-body" id="galleryBody">
+                <!-- Gallery content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gallery data (same as main site)
+        const galleryData = {
+            vinton: {
+                title: "The Vinton - Before & After Gallery",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/vinton/exterior-before-1.jpg",
+                        after: "images/portfolio/vinton/exterior-after-1.jpg",
+                        caption: "Exterior Transformation"
+                    },
+                    {
+                        before: "images/portfolio/vinton/kitchen-before-1.jpg",
+                        after: "images/portfolio/vinton/kitchen-after-1.jpg",
+                        caption: "Kitchen Renovation"
+                    },
+                    {
+                        before: "images/portfolio/vinton/living-before-1.jpg",
+                        after: "images/portfolio/vinton/living-after-1.jpg",
+                        caption: "Living Room Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/vinton/bedroom-before-1.jpg",
+                        after: "images/portfolio/vinton/bedroom-after-1.jpg",
+                        caption: "Bedroom Makeover"
+                    },
+                    {
+                        before: "images/portfolio/vinton/bathroom-before-1.jpg",
+                        after: "images/portfolio/vinton/bathroom-after-1.jpg",
+                        caption: "Bathroom Renovation"
+                    }
+                ]
+            },
+            church: {
+                title: "887 Stafford Road - Historic Church Restoration",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/church/exterior-before-1.jpg",
+                        after: "images/portfolio/church/exterior-after-1.jpg",
+                        caption: "Exterior Stone Restoration"
+                    },
+                    {
+                        before: "images/portfolio/church/interior-before-1.jpg",
+                        after: "images/portfolio/church/interior-after-1.jpg",
+                        caption: "Interior Renovation Progress"
+                    },
+                    {
+                        before: "images/portfolio/church/sanctuary-before-1.jpg",
+                        after: "images/portfolio/church/sanctuary-after-1.jpg",
+                        caption: "Sanctuary Transformation"
+                    },
+                    {
+                        before: "images/portfolio/church/basement-before-1.jpg",
+                        after: "images/portfolio/church/basement-after-1.jpg",
+                        caption: "Basement Conversion"
+                    }
+                ]
+            },
+            trap: {
+                title: "The Trap - Complete Property Transformation",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/trap/exterior-before-1.jpg",
+                        after: "images/portfolio/trap/exterior-after-1.jpg",
+                        caption: "Exterior Improvements"
+                    },
+                    {
+                        before: "images/portfolio/trap/kitchen-before-1.jpg",
+                        after: "images/portfolio/trap/kitchen-after-1.jpg",
+                        caption: "Kitchen Remodel"
+                    },
+                    {
+                        before: "images/portfolio/trap/living-before-1.jpg",
+                        after: "images/portfolio/trap/living-after-1.jpg",
+                        caption: "Living Space Enhancement"
+                    },
+                    {
+                        before: "images/portfolio/trap/bathroom-before-1.jpg",
+                        after: "images/portfolio/trap/bathroom-after-1.jpg",
+                        caption: "Bathroom Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/trap/basement-before-1.jpg",
+                        after: "images/portfolio/trap/basement-after-1.jpg",
+                        caption: "Basement Finishing"
+                    }
+                ]
+            },
+            poolhouse: {
+                title: "Pool House - Luxury Property Enhancement",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/poolhouse/exterior-before-1.jpg",
+                        after: "images/portfolio/poolhouse/exterior-after-1.jpg",
+                        caption: "Exterior Renovation"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/pool-before-1.jpg",
+                        after: "images/portfolio/poolhouse/pool-after-1.jpg",
+                        caption: "Pool Restoration"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/kitchen-before-1.jpg",
+                        after: "images/portfolio/poolhouse/kitchen-after-1.jpg",
+                        caption: "Gourmet Kitchen"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/living-before-1.jpg",
+                        after: "images/portfolio/poolhouse/living-after-1.jpg",
+                        caption: "Living Area Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/master-before-1.jpg",
+                        after: "images/portfolio/poolhouse/master-after-1.jpg",
+                        caption: "Master Suite"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/landscape-before-1.jpg",
+                        after: "images/portfolio/poolhouse/landscape-after-1.jpg",
+                        caption: "Landscape Design"
+                    }
+                ]
+            },
+            mbta: {
+                title: "MBTA Infrastructure Projects",
+                type: "carousel",
+                images: [
+                    {
+                        src: "images/portfolio/mbta/orange-line-1.jpg",
+                        caption: "Orange Line Track Improvements"
+                    },
+                    {
+                        src: "images/portfolio/mbta/orange-line-2.jpg",
+                        caption: "Infrastructure Upgrade Work"
+                    },
+                    {
+                        src: "images/portfolio/mbta/green-line-1.jpg",
+                        caption: "Green Line Shutdown Operations"
+                    },
+                    {
+                        src: "images/portfolio/mbta/green-line-2.jpg",
+                        caption: "Track Renovation Project"
+                    },
+                    {
+                        src: "images/portfolio/mbta/field-work-1.jpg",
+                        caption: "Field Engineering Operations"
+                    },
+                    {
+                        src: "images/portfolio/mbta/team-work-1.jpg",
+                        caption: "Team Coordination & Management"
+                    }
+                ]
+            }
+        };
+
+        let currentProject = null;
+        let currentSlideIndex = 0;
+
+        function checkGallerySystem() {
+            const result = document.getElementById('statusResult');
+            let status = '';
+
+            // Check if galleryData exists
+            if (typeof galleryData === 'undefined') {
+                status += '<div class="status error">❌ Gallery data not loaded</div>';
+                result.innerHTML = status;
+                return;
+            }
+
+            // Check modal elements
+            const modal = document.getElementById('galleryModal');
+            const title = document.getElementById('galleryTitle');
+            const body = document.getElementById('galleryBody');
+
+            if (!modal || !title || !body) {
+                status += '<div class="status error">❌ Gallery modal elements missing</div>';
+                result.innerHTML = status;
+                return;
+            }
+
+            // Check projects
+            const projects = Object.keys(galleryData);
+            status += '<div class="status success">✅ Gallery system loaded successfully</div>';
+            status += '<div class="status success">✅ Found ' + projects.length + ' projects: ' + projects.join(', ') + '</div>';
+            status += '<div class="status warning">⚠️ Images will show placeholders until you upload real images</div>';
+
+            result.innerHTML = status;
+        }
+
+        function testGallery(projectKey) {
+            console.log('🧪 Testing gallery:', projectKey);
+            openGallery(projectKey);
+        }
+
+        // Copy gallery functions from main site
+        function openGallery(projectKey) {
+            console.log('🖼️ Opening gallery for:', projectKey);
+            
+            const gallery = galleryData[projectKey];
+            if (!gallery) {
+                alert(`Gallery for "${projectKey}" not found.`);
+                return;
+            }
+
+            currentProject = projectKey;
+            const modal = document.getElementById('galleryModal');
+            const title = document.getElementById('galleryTitle');
+            const body = document.getElementById('galleryBody');
+
+            title.textContent = gallery.title;
+            modal.style.display = 'flex';
+            currentSlideIndex = 0;
+
+            if (gallery.type === 'before-after') {
+                body.innerHTML = createBeforeAfterGallery(gallery.images);
+            } else if (gallery.type === 'carousel') {
+                body.innerHTML = createCarouselGallery(gallery.images);
+            }
+
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            currentProject = null;
+        }
+
+        function createBeforeAfterGallery(images) {
+            return `
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="position: relative; width: 100%; height: 400px; background: #f8f9fa; border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #666;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">📷</div>
+                            <h3>Before & After Slider</h3>
+                            <p>Images will appear here once uploaded</p>
+                            <p style="font-size: 0.9rem; margin-top: 1rem;"><strong>Expected:</strong> ${images[0].caption}</p>
+                        </div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 10px;">
+                        ${images.map((img, index) => `
+                            <div style="aspect-ratio: 1; background: #e9ecef; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; text-align: center; padding: 0.5rem; border: ${index === 0 ? '3px solid #3498db' : '2px solid #ddd'};">
+                                ${img.caption}
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+                        <p><strong>✅ Gallery Modal Working!</strong></p>
+                        <p>Upload your images to see the actual before/after slider.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createCarouselGallery(images) {
+            return `
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <div style="position: relative; width: 100%; height: 400px; background: #f8f9fa; border-radius: 10px; overflow: hidden; margin-bottom: 1rem;">
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: #666;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🎠</div>
+                            <h3>Image Carousel</h3>
+                            <p>Images will appear here once uploaded</p>
+                            <p style="font-size: 0.9rem; margin-top: 1rem;"><strong>Expected:</strong> ${images[0].caption}</p>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 1rem;">
+                        ${images.map((_, index) => `
+                            <div style="width: 12px; height: 12px; border-radius: 50%; background: ${index === 0 ? '#3498db' : '#ddd'};"></div>
+                        `).join('')}
+                    </div>
+                    <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: #e8f4f8; border-radius: 8px;">
+                        <p><strong>✅ Gallery Modal Working!</strong></p>
+                        <p>Upload your images to see the actual carousel with ${images.length} images.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.id === 'galleryModal') {
+                closeGallery();
+            }
+        });
+
+        // Escape key to close
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeGallery();
+            }
+        });
+    </script>
+
+    <style>
+        /* Gallery Modal Styles */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-body {
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+    </style>
+</body>
+</html>
