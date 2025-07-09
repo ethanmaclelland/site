@@ -1,0 +1,2763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan MacLelland - Engineer | Serial Entrepreneur | Problem Solver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3498db;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #3498db;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+            font-weight: bold;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .experience-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #3498db;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            left: -20px;
+            border-right-color: white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            right: -20px;
+            border-left-color: white;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: #3498db;
+            border-radius: 50%;
+            transform: translateX(-50%);
+            border: 4px solid white;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .timeline-date {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .timeline-company {
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        .location {
+            color: #3498db;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-item.featured {
+            grid-column: span 1;
+        }
+
+        .portfolio-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .portfolio-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+            z-index: 1;
+        }
+
+        .portfolio-image img {
+            transition: transform 0.3s ease;
+            z-index: 2;
+            position: relative;
+        }
+
+        .portfolio-image img:not([src=""]) + .portfolio-placeholder {
+            display: none !important;
+        }
+
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.05);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.9), rgba(41, 128, 185, 0.9));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-details p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .portfolio-date {
+            color: #3498db;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-tag {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .portfolio-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-link:hover {
+            color: #2980b9;
+        }
+
+        .origin-story {
+            border: 3px solid #3498db;
+            position: relative;
+        }
+
+        .origin-story::before {
+            content: "ORIGIN STORY";
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            color: #3498db;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 20px;
+            border: 2px solid #3498db;
+        }
+
+        .brrr-breakdown {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .brrr-step {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .brrr-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .brrr-step strong {
+            color: #3498db;
+            font-weight: bold;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links .portfolio-link {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 8px 12px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white !important;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-links .portfolio-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            color: white !important;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 4rem 3rem;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2980b9, #3498db);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease-in-out infinite;
+        }
+
+        .resume-header-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .resume-header h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .resume-header p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .resume-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resume-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .resume-btn:hover::before {
+            left: 100%;
+        }
+
+        .resume-btn.primary {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+
+        .resume-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.4);
+        }
+
+        .resume-btn.secondary {
+            background: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.1);
+        }
+
+        .resume-btn.secondary:hover {
+            transform: translateY(-3px);
+            background: #3498db;
+            color: white;
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.3);
+        }
+
+        .resume-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3498db, #2980b9);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .highlight-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .highlight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .highlight-item h4 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .highlight-item p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* Gallery Modal Styles */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow: auto;
+            backdrop-filter: blur(5px);
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .gallery-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .gallery-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .gallery-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-body {
+            padding: 2rem;
+            max-height: 75vh;
+            overflow-y: auto;
+            min-height: 400px;
+        }
+
+        /* Image placeholders for missing images */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #666;
+            font-size: 1rem;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+        }
+
+        .image-placeholder::before {
+            content: '📷';
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.5;
+        }
+
+        /* Make sure images in gallery fit properly */
+        .before-after-container img,
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #f8f9fa;
+        }
+
+        /* Before/After Slider */
+        .before-after-slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .before-after-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .after-img {
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+            transition: clip-path 0.3s ease;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: #3498db;
+            transform: translateX(-50%);
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-handle::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            border: 3px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .slider-handle::after {
+            content: '⟷';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .before-after-labels {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 5;
+        }
+
+        .label {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Image Carousel */
+        .image-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .indicator.active {
+            background: #3498db;
+        }
+
+        /* Thumbnail Grid */
+        .thumbnail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .thumbnail {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+        }
+
+        .thumbnail.active {
+            border-color: #3498db;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Gallery Button */
+        .gallery-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .gallery-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(44, 62, 80, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 3rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                font-weight: 600;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+                min-height: 100vh;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                padding: 0 10px;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                margin: 5px;
+                display: block;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 10px;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .stat-item {
+                padding: 1rem 1.5rem;
+                min-width: 120px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .expertise-card {
+                padding: 1.5rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .portfolio-item.featured {
+                grid-column: span 1;
+            }
+
+            .portfolio-image {
+                height: 200px;
+            }
+
+            .portfolio-content {
+                padding: 1.5rem;
+            }
+
+            .portfolio-content h3 {
+                font-size: 1.2rem;
+            }
+
+            .portfolio-highlights {
+                gap: 0.3rem;
+            }
+
+            .highlight-tag {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+
+            .origin-story::before {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+                left: 10px;
+                top: -12px;
+            }
+
+            .brrr-breakdown {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .brrr-step {
+                font-size: 0.9rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .brrr-step strong {
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .project-links .portfolio-link {
+                flex: none;
+                min-width: auto;
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+
+            .experience-timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+                padding: 1.5rem;
+            }
+
+            .timeline-content::before {
+                left: -20px !important;
+                border-right-color: white !important;
+                border-left-color: transparent !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: none;
+            }
+
+            .timeline-title {
+                font-size: 1.1rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+                margin: 0 15px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 15px;
+                font-size: 16px;
+            }
+
+            .submit-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-links a {
+                font-size: 1.2rem;
+            }
+
+            .resume-header {
+                padding: 3rem 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .resume-header-icon {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .resume-header h3 {
+                font-size: 2rem;
+            }
+
+            .resume-header p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+
+            .resume-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .resume-btn {
+                width: 100%;
+                max-width: 280px;
+                padding: 15px 25px;
+                font-size: 1rem;
+            }
+
+            .resume-highlights {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .highlight-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .highlight-icon {
+                font-size: 2rem;
+            }
+
+            .highlight-item h4 {
+                font-size: 1.2rem;
+            }
+
+            .gallery-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+
+            .gallery-header {
+                padding: 1rem;
+            }
+
+            .gallery-body {
+                padding: 1rem;
+            }
+
+            .before-after-container,
+            .carousel-slide {
+                height: 250px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .slider-handle::before {
+                width: 25px;
+                height: 25px;
+            }
+
+            .before-after-labels {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+            }
+
+            .label {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            /* Improve touch targets */
+            .nav-links a,
+            .cta-button,
+            .portfolio-link,
+            .submit-btn,
+            .resume-btn {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Better spacing for readability */
+            .about-content p,
+            .portfolio-content p {
+                line-height: 1.7;
+                margin-bottom: 1.2rem;
+            }
+
+            /* Improve card spacing */
+            .expertise-card h3,
+            .portfolio-content h3 {
+                margin-bottom: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+                font-size: 2.5rem;
+            }
+
+            .portfolio-content {
+                padding: 1rem;
+            }
+
+            .timeline-content {
+                padding: 1rem;
+                margin-left: 40px;
+                width: calc(100% - 40px);
+            }
+
+            .experience-timeline::before {
+                left: 15px;
+            }
+
+            .timeline-dot {
+                left: 15px;
+                width: 15px;
+                height: 15px;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .hero-stats {
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+
+            .stat-item {
+                padding: 0.8rem 1rem;
+                min-width: 100px;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .resume-header {
+                padding: 2rem 1rem;
+            }
+
+            .resume-header h3 {
+                font-size: 1.8rem;
+            }
+
+            .resume-header-icon {
+                font-size: 2rem;
+            }
+
+            .highlight-item {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo" id="logo">EM</div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <!-- Navigation links will be populated by JavaScript -->
+            </ul>
+        </nav>
+    </header>
+
+    <main style="position: relative; z-index: 1;">
+        <section id="home" class="hero">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <div class="hero-content">
+                <h1 id="heroName">Ethan MacLelland</h1>
+                <div class="subtitle" id="heroSubtitle">Engineer | Serial Entrepreneur | Problem Solver</div>
+                <div class="location" id="heroLocation">📍 Brookline, Massachusetts</div>
+                <p id="heroDescription">Loading...</p>
+                <div class="hero-stats" id="heroStats">
+                    <!-- Stats will be populated by JavaScript -->
+                </div>
+                <div id="heroButtons">
+                    <!-- Buttons will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container">
+                <h2 id="aboutTitle">About Me</h2>
+                <div class="about-content">
+                    <div class="profile-image">EM</div>
+                    <div id="aboutContent">
+                        <!-- About content will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="container">
+                <h2 id="expertiseTitle">What I Do</h2>
+                <div class="expertise-grid" id="expertiseGrid">
+                    <!-- Expertise cards will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <h2 id="portfolioTitle">Featured Projects</h2>
+                <div class="portfolio-grid" id="portfolioGrid">
+                    <!-- Portfolio items will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 id="experienceTitle">Professional Journey</h2>
+                <div class="experience-timeline" id="experienceTimeline">
+                    <!-- Timeline will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+            <div class="container">
+                <h2 id="resumeTitle">Resume</h2>
+                <div class="resume-container">
+                    <div class="resume-header" id="resumeHeader">
+                        <!-- Resume header content will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="resume-highlights" id="resumeHighlights">
+                        <!-- Resume highlights will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 id="contactTitle">Let's Build Something Together</h2>
+                <form class="contact-form" onsubmit="handleSubmit(event)" id="contactForm">
+                    <!-- Form will be populated by JavaScript -->
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links" id="socialLinks">
+                <!-- Social links will be populated by JavaScript -->
+            </div>
+            <p id="copyright">&copy; 2025 Ethan MacLelland. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="gallery-content">
+            <div class="gallery-header">
+                <h3 id="galleryTitle">Project Gallery</h3>
+                <button class="gallery-close" onclick="closeGallery()">&times;</button>
+            </div>
+            <div class="gallery-body" id="galleryBody">
+                <!-- Gallery content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Load content data first -->
+    <script src="content.js"></script>
+    
+    <!-- Main application script -->
+    <script>
+        // Gallery data - this would normally be loaded from your content system
+        const galleryData = {
+            vinton: {
+                title: "The Vinton - Before & After Gallery",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/vinton/exterior-before-1.jpg",
+                        after: "images/portfolio/vinton/exterior-after-1.jpg",
+                        caption: "Exterior Transformation"
+                    },
+                    {
+                        before: "images/portfolio/vinton/kitchen-before-1.jpg",
+                        after: "images/portfolio/vinton/kitchen-after-1.jpg",
+                        caption: "Kitchen Renovation"
+                    },
+                    {
+                        before: "images/portfolio/vinton/living-before-1.jpg",
+                        after: "images/portfolio/vinton/living-after-1.jpg",
+                        caption: "Living Room Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/vinton/bedroom-before-1.jpg",
+                        after: "images/portfolio/vinton/bedroom-after-1.jpg",
+                        caption: "Bedroom Makeover"
+                    },
+                    {
+                        before: "images/portfolio/vinton/bathroom-before-1.jpg",
+                        after: "images/portfolio/vinton/bathroom-after-1.jpg",
+                        caption: "Bathroom Renovation"
+                    }
+                ]
+            },
+            church: {
+                title: "887 Stafford Road - Historic Church Restoration",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/church/exterior-before-1.jpg",
+                        after: "images/portfolio/church/exterior-after-1.jpg",
+                        caption: "Exterior Stone Restoration"
+                    },
+                    {
+                        before: "images/portfolio/church/interior-before-1.jpg",
+                        after: "images/portfolio/church/interior-after-1.jpg",
+                        caption: "Interior Renovation Progress"
+                    },
+                    {
+                        before: "images/portfolio/church/sanctuary-before-1.jpg",
+                        after: "images/portfolio/church/sanctuary-after-1.jpg",
+                        caption: "Sanctuary Transformation"
+                    },
+                    {
+                        before: "images/portfolio/church/basement-before-1.jpg",
+                        after: "images/portfolio/church/basement-after-1.jpg",
+                        caption: "Basement Conversion"
+                    }
+                ]
+            },
+            trap: {
+                title: "The Trap - Complete Property Transformation",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/trap/exterior-before-1.jpg",
+                        after: "images/portfolio/trap/exterior-after-1.jpg",
+                        caption: "Exterior Improvements"
+                    },
+                    {
+                        before: "images/portfolio/trap/kitchen-before-1.jpg",
+                        after: "images/portfolio/trap/kitchen-after-1.jpg",
+                        caption: "Kitchen Remodel"
+                    },
+                    {
+                        before: "images/portfolio/trap/living-before-1.jpg",
+                        after: "images/portfolio/trap/living-after-1.jpg",
+                        caption: "Living Space Enhancement"
+                    },
+                    {
+                        before: "images/portfolio/trap/bathroom-before-1.jpg",
+                        after: "images/portfolio/trap/bathroom-after-1.jpg",
+                        caption: "Bathroom Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/trap/basement-before-1.jpg",
+                        after: "images/portfolio/trap/basement-after-1.jpg",
+                        caption: "Basement Finishing"
+                    }
+                ]
+            },
+            poolhouse: {
+                title: "Pool House - Luxury Property Enhancement",
+                type: "before-after",
+                images: [
+                    {
+                        before: "images/portfolio/poolhouse/exterior-before-1.jpg",
+                        after: "images/portfolio/poolhouse/exterior-after-1.jpg",
+                        caption: "Exterior Renovation"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/pool-before-1.jpg",
+                        after: "images/portfolio/poolhouse/pool-after-1.jpg",
+                        caption: "Pool Restoration"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/kitchen-before-1.jpg",
+                        after: "images/portfolio/poolhouse/kitchen-after-1.jpg",
+                        caption: "Gourmet Kitchen"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/living-before-1.jpg",
+                        after: "images/portfolio/poolhouse/living-after-1.jpg",
+                        caption: "Living Area Upgrade"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/master-before-1.jpg",
+                        after: "images/portfolio/poolhouse/master-after-1.jpg",
+                        caption: "Master Suite"
+                    },
+                    {
+                        before: "images/portfolio/poolhouse/landscape-before-1.jpg",
+                        after: "images/portfolio/poolhouse/landscape-after-1.jpg",
+                        caption: "Landscape Design"
+                    }
+                ]
+            },
+            mbta: {
+                title: "MBTA Infrastructure Projects",
+                type: "carousel",
+                images: [
+                    {
+                        src: "images/portfolio/mbta/orange-line-1.jpg",
+                        caption: "Orange Line Track Improvements"
+                    },
+                    {
+                        src: "images/portfolio/mbta/orange-line-2.jpg",
+                        caption: "Infrastructure Upgrade Work"
+                    },
+                    {
+                        src: "images/portfolio/mbta/green-line-1.jpg",
+                        caption: "Green Line Shutdown Operations"
+                    },
+                    {
+                        src: "images/portfolio/mbta/green-line-2.jpg",
+                        caption: "Track Renovation Project"
+                    },
+                    {
+                        src: "images/portfolio/mbta/field-work-1.jpg",
+                        caption: "Field Engineering Operations"
+                    },
+                    {
+                        src: "images/portfolio/mbta/team-work-1.jpg",
+                        caption: "Team Coordination & Management"
+                    }
+                ]
+            }
+        };
+
+        // Experience timeline data
+        const experienceData = [
+            {
+                date: "Jan 2025 - Present",
+                title: "Project Manager",
+                company: "MAC Development Co.",
+                description: "Leading comprehensive renovation plans and managing the full project lifecycle from acquisition analysis through tenant placement, leveraging engineering background to identify structural opportunities and cost-effective improvements."
+            },
+            {
+                date: "Apr 2024 - Jan 2025",
+                title: "Field Engineer",
+                company: "SPS New England, Inc.",
+                description: "Managed field engineering operations during critical MBTA rail diversion shutdowns across Orange, Green, and other transit lines. Coordinated complex logistics, material delivery, and cost control while working under tight shutdown windows. This experience provided valuable lessons in high-pressure project management and complex stakeholder coordination."
+            },
+            {
+                date: "Dec 2019 - Present",
+                title: "Property Manager & Founder",
+                company: "MAC Development Co.",
+                description: "Founded and operated a real estate investment company specializing in value-add properties. Built a network of skilled subcontractors and established quality standards that became the foundation for scalable operations."
+            },
+            {
+                date: "May 2019 - Aug 2019",
+                title: "Engineering Intern",
+                company: "General Dynamics Electric Boat",
+                description: "Built hands-on engineering skills while collaborating with team members to generate innovative solutions to complex problems. Utilized CAD software and compiled comprehensive test results for management review."
+            }
+        ];
+
+        // Gallery functions
+        let currentSlideIndex = 0;
+        let currentProject = null;
+
+        function openGallery(projectKey) {
+            console.log('🖼️ Opening gallery for:', projectKey);
+            
+            const gallery = galleryData[projectKey];
+            if (!gallery) {
+                console.error('❌ Gallery data not found for:', projectKey);
+                alert(`Gallery for "${projectKey}" not found. Please check the gallery data.`);
+                return;
+            }
+
+            currentProject = projectKey; // Store current project
+            const modal = document.getElementById('galleryModal');
+            const title = document.getElementById('galleryTitle');
+            const body = document.getElementById('galleryBody');
+
+            if (!modal || !title || !body) {
+                console.error('❌ Gallery modal elements not found');
+                alert('Gallery modal not properly initialized.');
+                return;
+            }
+
+            console.log('✅ Gallery data found:', gallery);
+            
+            title.textContent = gallery.title;
+            modal.classList.add('active');
+            currentSlideIndex = 0;
+
+            try {
+                if (gallery.type === 'before-after') {
+                    console.log('📸 Creating before-after gallery with', gallery.images.length, 'image pairs');
+                    body.innerHTML = createBeforeAfterGallery(gallery.images);
+                    setTimeout(() => initializeBeforeAfterSlider(), 100);
+                } else if (gallery.type === 'carousel') {
+                    console.log('🎠 Creating carousel gallery with', gallery.images.length, 'images');
+                    body.innerHTML = createCarouselGallery(gallery.images);
+                    setTimeout(() => initializeCarousel(gallery.images.length), 100);
+                } else {
+                    console.error('❌ Unknown gallery type:', gallery.type);
+                    body.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Unknown gallery type. Please check the gallery configuration.</p>';
+                }
+            } catch (error) {
+                console.error('❌ Error creating gallery:', error);
+                body.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">Error loading gallery. Please try again.</p>';
+            }
+
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+            
+            console.log('✅ Gallery modal opened successfully');
+        }
+
+        function closeGallery() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            currentProject = null; // Reset current project
+        }
+
+        function createBeforeAfterGallery(images) {
+            return `
+                <div class="before-after-slider">
+                    <div class="before-after-container" id="beforeAfterContainer">
+                        <img src="${images[0].before}" alt="Before" class="before-img" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none; position: absolute; top: 0; left: 0; width: 50%; height: 100%;">
+                            Before Image<br><small>${images[0].before}</small>
+                        </div>
+                        <img src="${images[0].after}" alt="After" class="after-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="image-placeholder" style="display: none; position: absolute; top: 0; right: 0; width: 50%; height: 100%;">
+                            After Image<br><small>${images[0].after}</small>
+                        </div>
+                        <div class="slider-handle" id="sliderHandle"></div>
+                        <div class="before-after-labels">
+                            <span class="label">BEFORE</span>
+                            <span class="label">AFTER</span>
+                        </div>
+                    </div>
+                    <div class="thumbnail-grid">
+                        ${images.map((img, index) => `
+                            <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="switchBeforeAfter(${index})">
+                                <img src="${img.after}" alt="${img.caption}"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="image-placeholder" style="display: none; font-size: 0.8rem; padding: 0.5rem;">
+                                    ${img.caption}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        💡 <strong>Tip:</strong> Drag the slider handle or click anywhere on the image to compare before and after. Click thumbnails to switch between rooms.
+                    </p>
+                </div>
+            `;
+        }
+
+        function createCarouselGallery(images) {
+            return `
+                <div class="image-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="carouselTrack">
+                            ${images.map(img => `
+                                <div class="carousel-slide">
+                                    <img src="${img.src}" alt="${img.caption}"
+                                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                    <div class="image-placeholder" style="display: none;">
+                                        ${img.caption}<br><small>${img.src}</small>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <button class="carousel-nav prev" onclick="prevSlide()">‹</button>
+                        <button class="carousel-nav next" onclick="nextSlide()">›</button>
+                    </div>
+                    <div class="carousel-indicators">
+                        ${images.map((_, index) => `
+                            <div class="indicator ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>
+                        `).join('')}
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                        💡 <strong>Navigation:</strong> Use arrow buttons, click indicators, or swipe on mobile to browse images.
+                    </p>
+                </div>
+            `;
+        }
+
+        function initializeBeforeAfterSlider() {
+            const handle = document.getElementById('sliderHandle');
+            const container = document.getElementById('beforeAfterContainer');
+            const afterImg = container.querySelector('.after-img');
+            
+            let isDragging = false;
+
+            function updateSlider(percentage) {
+                afterImg.style.clipPath = `polygon(${percentage}% 0, 100% 0, 100% 100%, ${percentage}% 100%)`;
+                handle.style.left = `${percentage}%`;
+            }
+
+            function getPercentage(event) {
+                const rect = container.getBoundingClientRect();
+                const x = (event.clientX || event.touches[0].clientX) - rect.left;
+                return Math.min(Math.max((x / rect.width) * 100, 0), 100);
+            }
+
+            handle.addEventListener('mousedown', () => isDragging = true);
+            document.addEventListener('mouseup', () => isDragging = false);
+            
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    updateSlider(getPercentage(e));
+                }
+            });
+
+            // Touch events for mobile
+            handle.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isDragging = true;
+            });
+            
+            document.addEventListener('touchend', () => isDragging = false);
+            
+            container.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    updateSlider(getPercentage(e));
+                }
+            });
+
+            // Click to move slider
+            container.addEventListener('click', (e) => {
+                if (!isDragging) {
+                    updateSlider(getPercentage(e));
+                }
+            });
+        }
+
+        function switchBeforeAfter(index) {
+            if (!currentProject) {
+                console.error('❌ No current project set');
+                return;
+            }
+            
+            const gallery = galleryData[currentProject];
+            if (!gallery || !gallery.images[index]) {
+                console.error('❌ Gallery or image not found:', currentProject, index);
+                return;
+            }
+
+            console.log('🔄 Switching to image pair', index, 'for project', currentProject);
+
+            const container = document.getElementById('beforeAfterContainer');
+            if (!container) {
+                console.error('❌ Before-after container not found');
+                return;
+            }
+
+            const beforeImg = container.querySelector('.before-img');
+            const afterImg = container.querySelector('.after-img');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            
+            if (beforeImg && afterImg) {
+                beforeImg.src = gallery.images[index].before;
+                afterImg.src = gallery.images[index].after;
+                
+                // Show images, hide placeholders initially
+                beforeImg.style.display = 'block';
+                afterImg.style.display = 'block';
+                
+                // Update thumbnail active state
+                thumbnails.forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+
+                // Reset slider to middle position
+                const handle = document.getElementById('sliderHandle');
+                if (handle) {
+                    afterImg.style.clipPath = 'polygon(50% 0, 100% 0, 100% 100%, 50% 100%)';
+                    handle.style.left = '50%';
+                }
+                
+                console.log('✅ Successfully switched to image pair', index);
+            } else {
+                console.error('❌ Before/after images not found in container');
+            }
+        }
+
+        function initializeCarousel(totalSlides) {
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            if (track) {
+                track.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+            }
+            
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentSlideIndex);
+            });
+        }
+
+        function nextSlide() {
+            const totalSlides = document.querySelectorAll('.carousel-slide').length;
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            const totalSlides = document.querySelectorAll('.carousel-slide').length;
+            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlideIndex = index;
+            updateCarousel();
+        }
+
+        // Wait for content to be loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if siteContent is available
+            if (typeof siteContent !== 'undefined') {
+                populateContent();
+            } else {
+                // If content.js hasn't loaded yet, wait a bit
+                setTimeout(function() {
+                    if (typeof siteContent !== 'undefined') {
+                        populateContent();
+                    } else {
+                        console.error('Content not loaded. Please check content.js file.');
+                    }
+                }, 100);
+            }
+        });
+
+        function populateContent() {
+            try {
+                // Populate Hero Section
+                document.getElementById('heroName').textContent = siteContent.hero.name;
+                document.getElementById('heroSubtitle').textContent = siteContent.hero.subtitle;
+                document.getElementById('heroLocation').textContent = siteContent.hero.location;
+                document.getElementById('heroDescription').textContent = siteContent.hero.description;
+
+                // Populate Hero Stats
+                const statsContainer = document.getElementById('heroStats');
+                statsContainer.innerHTML = '';
+                Object.entries(siteContent.hero.stats).forEach(([key, stat]) => {
+                    const statItem = document.createElement('div');
+                    statItem.className = 'stat-item';
+                    statItem.innerHTML = `
+                        <div class="stat-number">${stat.number}</div>
+                        <div class="stat-label">${stat.label}</div>
+                    `;
+                    statsContainer.appendChild(statItem);
+                });
+
+                // Populate Hero Buttons
+                const buttonsContainer = document.getElementById('heroButtons');
+                buttonsContainer.innerHTML = `
+                    <a href="#contact" class="cta-button">${siteContent.hero.buttons.contact}</a>
+                    <a href="https://www.linkedin.com/in/emaclelland/" class="cta-button secondary" target="_blank">${siteContent.hero.buttons.linkedin}</a>
+                `;
+
+                // Populate Navigation
+                const navLinks = document.getElementById('navLinks');
+                navLinks.innerHTML = '';
+                siteContent.navigation.links.forEach(link => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<a href="${link.href}">${link.text}</a>`;
+                    navLinks.appendChild(li);
+                });
+
+                // Update logo
+                document.getElementById('logo').textContent = siteContent.navigation.logo;
+
+                // Populate About Section
+                document.getElementById('aboutTitle').textContent = siteContent.about.title;
+                const aboutContent = document.getElementById('aboutContent');
+                aboutContent.innerHTML = '';
+                siteContent.about.paragraphs.forEach(paragraph => {
+                    const p = document.createElement('p');
+                    p.style.fontSize = '1.1rem';
+                    p.style.marginBottom = '1.5rem';
+                    p.textContent = paragraph;
+                    aboutContent.appendChild(p);
+                });
+
+                // Populate Expertise Section
+                document.getElementById('expertiseTitle').textContent = siteContent.expertise.title;
+                const expertiseGrid = document.getElementById('expertiseGrid');
+                expertiseGrid.innerHTML = '';
+                siteContent.expertise.cards.forEach(card => {
+                    const cardDiv = document.createElement('div');
+                    cardDiv.className = 'expertise-card';
+                    cardDiv.innerHTML = `
+                        <div class="expertise-icon">${card.icon}</div>
+                        <h3>${card.title}</h3>
+                        <p>${card.description}</p>
+                    `;
+                    expertiseGrid.appendChild(cardDiv);
+                });
+
+                // Populate Portfolio Section
+                document.getElementById('portfolioTitle').textContent = siteContent.portfolio.title;
+                const portfolioGrid = document.getElementById('portfolioGrid');
+                portfolioGrid.innerHTML = '';
+
+                // Create portfolio items
+                const portfolioItems = [
+                    { 
+                        key: 'vinton', 
+                        data: siteContent.portfolio.vinton, 
+                        featured: true, 
+                        originStory: true, 
+                        mainImage: 'images/portfolio/vinton/exterior-after-1.jpg',
+                        fallbackIcon: '🏰', 
+                        gradient: 'linear-gradient(135deg, #8B4513 0%, #D2691E 100%)' 
+                    },
+                    { 
+                        key: 'church', 
+                        data: siteContent.portfolio.church, 
+                        featured: true, 
+                        mainImage: 'images/portfolio/church/exterior-after-1.jpg',
+                        fallbackIcon: '⛪', 
+                        gradient: 'linear-gradient(135deg, #4A4A4A 0%, #2C2C2C 100%)' 
+                    },
+                    { 
+                        key: 'trap', 
+                        data: siteContent.portfolio.trap, 
+                        featured: false, 
+                        mainImage: 'images/portfolio/trap/exterior-after-1.jpg',
+                        fallbackIcon: '🏡', 
+                        gradient: 'linear-gradient(135deg, #27AE60 0%, #2ECC71 100%)' 
+                    },
+                    { 
+                        key: 'poolhouse', 
+                        data: siteContent.portfolio.poolhouse, 
+                        featured: false, 
+                        mainImage: 'images/portfolio/poolhouse/exterior-after-1.jpg',
+                        fallbackIcon: '🏊', 
+                        gradient: 'linear-gradient(135deg, #3498DB 0%, #5DADE2 100%)' 
+                    },
+                    { 
+                        key: 'mbta', 
+                        data: siteContent.portfolio.mbta, 
+                        featured: false, 
+                        mainImage: 'images/portfolio/mbta/orange-line-1.jpg',
+                        fallbackIcon: '🚇', 
+                        gradient: 'linear-gradient(135deg, #FF6B35 0%, #2E7D32 100%)' 
+                    }
+                ];
+
+                portfolioItems.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.className = `portfolio-item ${item.featured ? 'featured' : ''} ${item.originStory ? 'origin-story' : ''}`;
+                    
+                    let additionalContent = '';
+                    if (item.key === 'vinton') {
+                        additionalContent = `
+                            <div class="brrr-breakdown">
+                                <div class="brrr-step">
+                                    <strong>Buy:</strong> Discovered during sophomore year housing search
+                                </div>
+                                <div class="brrr-step">
+                                    <strong>Renovate:</strong> Room-by-room transformation preserving historic charm
+                                </div>
+                                <div class="brrr-step">
+                                    <strong>Rent:</strong> Leased in one day, consistently rented to UConn students
+                                </div>
+                                <div class="brrr-step">
+                                    <strong>Refinance:</strong> Unlocked equity to fund next property acquisition
+                                </div>
+                            </div>
+                            <button class="gallery-btn" onclick="openGallery('${item.key}')">
+                                ${item.data.galleryButton}
+                            </button>
+                            <a href="https://www.linkedin.com/posts/emaclelland_brrr-realestate-realestateinvestment-activity-7274902757940027393-Va_l" target="_blank" class="portfolio-link">Read Full Story →</a>
+                        `;
+                    } else if (item.key === 'church') {
+                        additionalContent = `
+                            <div style="background: linear-gradient(135deg, #e8f4f8 0%, #f8f9fa 100%); border-radius: 10px; padding: 1.2rem; margin: 1.2rem 0; border-left: 4px solid #3498db;">
+                                <p style="margin: 0; font-size: 0.95rem; line-height: 1.5; color: #2c3e50;"><strong>Historic Significance:</strong> This beautiful stone church, originally built in 1935 as St. Joseph's Church, is a registered historic building in Connecticut. The adaptive reuse project carefully preserves its architectural heritage while transforming it for modern mixed-use development.</p>
+                            </div>
+                            <button class="gallery-btn" onclick="openGallery('${item.key}')">
+                                ${item.data.galleryButton}
+                            </button>
+                            <div class="project-links">
+                                <a href="https://www.linkedin.com/posts/emaclelland_day-1-at-887-stafford-road-this-stone-activity-7310046311167188993-a0sV" target="_blank" class="portfolio-link">View Project Details →</a>
+                                <a href="https://portal.ct.gov/SHPO/Historic-Preservation/Connecticut-State-Register" target="_blank" class="portfolio-link">CT Historic Registry →</a>
+                            </div>
+                        `;
+                    } else if (item.key === 'mbta') {
+                        additionalContent = `
+                            <button class="gallery-btn" onclick="openGallery('${item.key}')">
+                                ${item.data.galleryButton}
+                            </button>
+                            <div class="project-links">
+                                <a href="https://www.linkedin.com/posts/emaclelland_tip-boston-mbta-activity-7258988855679225856-61TS" target="_blank" class="portfolio-link">Orange Line Project →</a>
+                                <a href="https://www.linkedin.com/posts/emaclelland_tip-railroadsps-infrastructureinnovation-activity-7246988086696382464-4VNp" target="_blank" class="portfolio-link">Track Innovation →</a>
+                                <a href="https://www.linkedin.com/posts/spsneinc_during-the-mbtas-recent-10-day-green-line-ugcPost-7233926688844181504-1iby" target="_blank" class="portfolio-link">Green Line Shutdown →</a>
+                            </div>
+                        `;
+                    } else {
+                        additionalContent = `
+                            <button class="gallery-btn" onclick="openGallery('${item.key}')">
+                                ${item.data.galleryButton}
+                            </button>
+                        `;
+                    }
+
+                    portfolioItem.innerHTML = `
+                        <div class="portfolio-image">
+                            <img src="${item.mainImage}" alt="${item.data.title}" 
+                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px 15px 0 0;"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="portfolio-placeholder" style="background: ${item.gradient}; color: white; display: none; align-items: center; justify-content: center; font-size: 2rem;">${item.fallbackIcon}</div>
+                            <div class="portfolio-overlay">
+                                <div class="portfolio-details">
+                                    <h3>${item.data.title.split(':')[0]}</h3>
+                                    <p>${item.data.title.includes(':') ? item.data.title.split(':')[1].trim() : ''}</p>
+                                    <span class="portfolio-tag">${item.key === 'vinton' ? 'First Investment Property' : item.key === 'church' ? 'Current Project' : item.key === 'mbta' ? 'Past Experience' : 'Investment Property'}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3>${item.data.title}</h3>
+                            <p class="portfolio-date">${item.data.date}</p>
+                            <p>${item.data.description}</p>
+                            <div class="portfolio-highlights">
+                                ${item.data.tags.map(tag => `<span class="highlight-tag">${tag}</span>`).join('')}
+                            </div>
+                            ${additionalContent}
+                        </div>
+                    `;
+                    portfolioGrid.appendChild(portfolioItem);
+                });
+
+                // Populate Experience Section
+                document.getElementById('experienceTitle').textContent = siteContent.experience.title;
+                const timelineContainer = document.getElementById('experienceTimeline');
+                timelineContainer.innerHTML = '';
+                experienceData.forEach(item => {
+                    const timelineItem = document.createElement('div');
+                    timelineItem.className = 'timeline-item';
+                    timelineItem.innerHTML = `
+                        <div class="timeline-content">
+                            <div class="timeline-date">${item.date}</div>
+                            <div class="timeline-title">${item.title}</div>
+                            <div class="timeline-company">${item.company}</div>
+                            <p>${item.description}</p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    `;
+                    timelineContainer.appendChild(timelineItem);
+                });
+
+                // Populate Resume Section
+                document.getElementById('resumeTitle').textContent = siteContent.resume.title;
+                const resumeHeader = document.getElementById('resumeHeader');
+                resumeHeader.innerHTML = `
+                    <div class="resume-header-icon">${siteContent.resume.header.icon}</div>
+                    <h3>${siteContent.resume.header.title}</h3>
+                    <p>${siteContent.resume.header.description}</p>
+                    <div class="resume-actions">
+                        <a href="docs/ethan-maclelland-resume.pdf" target="_blank" class="resume-btn primary">
+                            ${siteContent.resume.header.buttons.view}
+                        </a>
+                        <a href="docs/ethan-maclelland-resume.pdf" download="Ethan_MacLelland_Resume.pdf" class="resume-btn secondary">
+                            ${siteContent.resume.header.buttons.download}
+                        </a>
+                    </div>
+                `;
+
+                const resumeHighlights = document.getElementById('resumeHighlights');
+                resumeHighlights.innerHTML = '';
+                siteContent.resume.highlights.forEach(highlight => {
+                    const highlightItem = document.createElement('div');
+                    highlightItem.className = 'highlight-item';
+                    highlightItem.innerHTML = `
+                        <div class="highlight-icon">${highlight.icon}</div>
+                        <h4>${highlight.title}</h4>
+                        <p>${highlight.description}</p>
+                    `;
+                    resumeHighlights.appendChild(highlightItem);
+                });
+
+                // Populate Contact Section
+                document.getElementById('contactTitle').textContent = siteContent.contact.title;
+                const contactForm = document.getElementById('contactForm');
+                contactForm.innerHTML = `
+                    <div class="form-group">
+                        <label for="name">${siteContent.contact.form.nameLabel}</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">${siteContent.contact.form.emailLabel}</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="project">${siteContent.contact.form.projectLabel}</label>
+                        <select id="project" name="project">
+                            ${siteContent.contact.form.projectOptions.map(option => 
+                                `<option value="${option.value}">${option.text}</option>`
+                            ).join('')}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">${siteContent.contact.form.messageLabel}</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="${siteContent.contact.form.messagePlaceholder}"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">${siteContent.contact.form.submitButton}</button>
+                `;
+
+                // Populate Footer
+                const socialLinks = document.getElementById('socialLinks');
+                socialLinks.innerHTML = '';
+                siteContent.footer.socialLinks.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.href;
+                    a.textContent = link.text;
+                    if (link.href.startsWith('http')) {
+                        a.target = '_blank';
+                    }
+                    a.title = link.text;
+                    socialLinks.appendChild(a);
+                });
+
+                document.getElementById('copyright').textContent = siteContent.footer.copyright;
+
+                console.log('✅ Content loaded successfully from content.js');
+
+            } catch (error) {
+                console.error('❌ Error loading content:', error);
+            }
+        }
+
+        // Close modal when clicking outside or pressing Escape
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeGallery();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('galleryModal');
+            if (modal && modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeGallery();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            }
+        });
+
+        // Add touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const modal = document.getElementById('galleryModal');
+            if (modal && modal.classList.contains('active')) {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide(); // Swipe left = next
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide(); // Swipe right = previous
+                }
+            }
+        }
+
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.nav-links a')) {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                navToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('click', function(e) {
+            if (e.target.matches('a[href^="#"]')) {
+                e.preventDefault();
+                const target = document.querySelector(e.target.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const navToggleSpans = document.querySelectorAll('.nav-toggle span');
+            
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.querySelectorAll('a, .logo').forEach(el => {
+                    el.style.color = '#333';
+                });
+                navToggleSpans.forEach(span => {
+                    span.style.background = '#333';
+                });
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.1)';
+                header.querySelectorAll('a, .logo').forEach(el => {
+                    el.style.color = 'white';
+                });
+                navToggleSpans.forEach(span => {
+                    span.style.background = 'white';
+                });
+            }
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            alert(`Thank you, ${data.name}! Your message about ${data.project || 'your project'} has been received. I'll get back to you soon to discuss how we can tackle this challenge together!`);
+            event.target.reset();
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements when they're added to the DOM
+        setTimeout(() => {
+            document.querySelectorAll('.expertise-card, .portfolio-item, .timeline-item, .highlight-item').forEach(item => {
+                observer.observe(item);
+            });
+        }, 500);
+
+        // Test function - you can call this in browser console to test gallery
+        function testGallery() {
+            console.log('🧪 Testing gallery system...');
+            console.log('Available galleries:', Object.keys(galleryData));
+            
+            // Test opening Vinton gallery
+            console.log('Testing Vinton gallery...');
+            openGallery('vinton');
+        }
+
+        // Make test function available globally for debugging
+        window.testGallery = testGallery;
+
+        // Prevent iOS zoom on form inputs
+        document.addEventListener('touchstart', function() {
+            if (window.innerWidth < 768) {
+                const viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
