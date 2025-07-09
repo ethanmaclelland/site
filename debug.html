@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Ethan MacLelland</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .debug-info {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .error { color: red; }
+        .success { color: green; }
+        .section { margin: 40px 0; padding: 20px; border: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Debug Page - Ethan MacLelland</h1>
+    
+    <div class="debug-info">
+        <h2>Debug Information:</h2>
+        <p id="contentStatus">Checking content.js loading...</p>
+        <p id="jsStatus">Checking JavaScript functionality...</p>
+        <p id="fileStatus">Checking file structure...</p>
+    </div>
+
+    <!-- Test sections that should be populated -->
+    <div class="section">
+        <h2>Hero Section Test</h2>
+        <p>Name: <span id="testName">Loading...</span></p>
+        <p>Subtitle: <span id="testSubtitle">Loading...</span></p>
+        <p>Description: <span id="testDescription">Loading...</span></p>
+    </div>
+
+    <div class="section">
+        <h2>Navigation Test</h2>
+        <div id="testNav">Loading navigation...</div>
+    </div>
+
+    <div class="section">
+        <h2>About Section Test</h2>
+        <div id="testAbout">Loading about content...</div>
+    </div>
+
+    <!-- Load content.js -->
+    <script src="content.js"></script>
+    
+    <script>
+        console.log("Debug script starting...");
+        
+        // Test if content.js loaded
+        setTimeout(function() {
+            const contentStatus = document.getElementById('contentStatus');
+            const jsStatus = document.getElementById('jsStatus');
+            const fileStatus = document.getElementById('fileStatus');
+            
+            // Check content.js
+            if (typeof siteContent !== 'undefined') {
+                contentStatus.innerHTML = '<span class="success">✅ content.js loaded successfully!</span>';
+                console.log("✅ siteContent object:", siteContent);
+                
+                // Test populating content
+                try {
+                    document.getElementById('testName').textContent = siteContent.hero.name || 'Error loading name';
+                    document.getElementById('testSubtitle').textContent = siteContent.hero.subtitle || 'Error loading subtitle';
+                    document.getElementById('testDescription').textContent = siteContent.hero.description || 'Error loading description';
+                    
+                    // Test navigation
+                    if (siteContent.navigation && siteContent.navigation.links) {
+                        const navHTML = siteContent.navigation.links.map(link => 
+                            `<a href="${link.href}">${link.text}</a>`
+                        ).join(' | ');
+                        document.getElementById('testNav').innerHTML = navHTML;
+                    }
+                    
+                    // Test about section
+                    if (siteContent.about && siteContent.about.paragraphs) {
+                        const aboutHTML = siteContent.about.paragraphs.map(p => 
+                            `<p>${p}</p>`
+                        ).join('');
+                        document.getElementById('testAbout').innerHTML = aboutHTML;
+                    }
+                    
+                    jsStatus.innerHTML = '<span class="success">✅ JavaScript is working correctly!</span>';
+                    fileStatus.innerHTML = '<span class="success">✅ All tests passed - your main site should work!</span>';
+                    
+                } catch (error) {
+                    jsStatus.innerHTML = '<span class="error">❌ JavaScript error: ' + error.message + '</span>';
+                    console.error("JavaScript error:", error);
+                }
+                
+            } else {
+                contentStatus.innerHTML = '<span class="error">❌ content.js failed to load!</span>';
+                jsStatus.innerHTML = '<span class="error">❌ Cannot test JavaScript - content.js missing</span>';
+                fileStatus.innerHTML = '<span class="error">❌ Check file paths and GitHub Pages deployment</span>';
+                console.error("❌ siteContent is undefined - content.js not loaded");
+            }
+            
+            // Additional file checks
+            console.log("Current URL:", window.location.href);
+            console.log("Document title:", document.title);
+            
+        }, 500);
+        
+        // Check for any JavaScript errors
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript Error:', e.error);
+            document.getElementById('jsStatus').innerHTML = '<span class="error">❌ JavaScript Error: ' + e.message + '</span>';
+        });
+    </script>
+</body>
+</html>
