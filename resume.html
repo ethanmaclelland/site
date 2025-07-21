@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan MacLelland - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+        }
+
+        .container {
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 40px;
+            min-height: 11in;
+        }
+
+        .main-content {
+            padding-right: 20px;
+        }
+
+        .sidebar {
+            border-left: 3px solid #2c5aa0;
+            padding-left: 20px;
+        }
+
+        .header {
+            grid-column: 1 / -1;
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2c5aa0;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .header .contact {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c5aa0;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .job {
+            margin-bottom: 20px;
+        }
+
+        .job-header {
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #2c5aa0;
+        }
+
+        .location-date {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+            margin-top: 2px;
+        }
+
+        .job-description ul {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .job-description li {
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .job-description li:before {
+            content: "•";
+            color: #2c5aa0;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .education {
+            margin-bottom: 8px;
+        }
+
+        .education-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .education-details {
+            font-size: 14px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .sidebar .section {
+            margin-bottom: 25px;
+        }
+
+        .sidebar .section-title {
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .achievement-item, .skill-category, .cert-item, .leadership-item {
+            margin-bottom: 8px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .skill-category {
+            margin-bottom: 12px;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: #2c5aa0;
+            margin-bottom: 4px;
+        }
+
+        .skill-list {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .cert-item {
+            color: #666;
+        }
+
+        .leadership-item {
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .objective-text {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #555;
+            text-align: justify;
+        }
+
+        @media print {
+            .container {
+                margin: 0;
+                padding: 20px;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ethan MacLelland</h1>
+            <div class="subtitle">Engineer | Serial Entrepreneur | Problem Solver</div>
+            <div class="contact">Boston, Massachusetts • ethandmac@gmail.com • www.linkedin.com/in/emaclelland</div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">Objective</h2>
+                <p class="objective-text">
+                    Mechanical engineer and serial entrepreneur who thrives on "impossible" challenges. Passionate about combining technical expertise with creative problem-solving to transform complex design challenges and distressed properties into successful, high-performing assets.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Experience</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title"><span class="company">MAC Development Co.</span> - Project Manager</div>
+                        <div class="location-date">Boston, MA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jan 2025 - Present</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Founded real estate investment company specializing in BRRR strategy (Buy, Renovate, Rent, Refinance)</li>
+                            <li>Manage full project lifecycle from acquisition through tenant placement, achieving 0% vacancy rate</li>
+                            <li>Currently transforming 1935 stone church into 4BR/2BA single-family home (+1,300 sq ft)</li>
+                            <li>Apply engineering principles to identify undervalued properties and optimize renovation ROI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title"><span class="company">SPS New England, Inc.</span> - Field Engineer</div>
+                        <div class="location-date">Greater Boston, MA &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Apr 2024 - Jan 2025</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Managed field engineering operations during critical MBTA rail diversion shutdowns</li>
+                            <li>Coordinated complex logistics including subcontractor teams, material delivery, and cost control</li>
+                            <li>Provided technical reviews for construction drawings and handled design change requests</li>
+                            <li>Ensured seamless project execution under tight shutdown windows</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title"><span class="company">General Dynamics Electric Boat</span> - Engineering Intern</div>
+                        <div class="location-date">Groton, CT &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; May 2019 - Aug 2019</div>
+                    </div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Developed hands-on engineering skills collaborating on innovative solutions to complex problems</li>
+                            <li>Utilized CAD software for mechanical component design and compiled test results for management</li>
+                            <li>Interpreted shipbuilding specifications and contractual requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education">
+                    <div class="education-title">University of Connecticut, Storrs, CT</div>
+                    <div class="education-details">
+                        <em>Bachelor of Science in Engineering</em>, May 2022<br>
+                        Major: Mechanical Engineering; Concentration: Aerospace | Minor: Astrophysics<br>
+                        Senior Design: Energy Consumption and Efficiency Initiatives for Pfizer
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="section">
+                <h2 class="section-title">Key Achievements</h2>
+                <div class="achievement-item">• Built successful real estate portfolio starting during college</div>
+                <div class="achievement-item">• Achieved 0% vacancy rate across property portfolio</div>
+                <div class="achievement-item">• Managed critical MBTA infrastructure projects with zero delays</div>
+                <div class="achievement-item">• Early entrepreneur: started with iPod repair/flipping business</div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skill-category">
+                    <div class="skill-title">Engineering:</div>
+                    <div class="skill-list">Project Management, CAD Software, Technical Drawing Review, Cost Control, Construction Management</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Real Estate:</div>
+                    <div class="skill-list">BRRR Strategy, Property Analysis, Renovation Planning, Municipal Approvals</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Core:</div>
+                    <div class="skill-list">Problem Solving, Leadership, Team Building, Strategic Planning</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="cert-item">Amtrak Contractor (May 2024)</div>
+                <div class="cert-item">Keolis RWP (May 2024)</div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Leadership</h2>
+                <div class="leadership-item">UConn Student Union Board of Governors, Vice Chair (2018-2022)</div>
+                <div class="leadership-item">UConn Astronomy Association, President (2018-2022)</div>
+                <div class="leadership-item">National Society of Leadership and Success, Member (2020)</div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Languages</h2>
+                <div class="leadership-item">English (Native), French (Conversational)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
