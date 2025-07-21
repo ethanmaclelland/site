@@ -135,7 +135,7 @@ const siteContent = {
             title: "Professional Resume",
             description: "Comprehensive overview of my experience in mechanical engineering, real estate development, and entrepreneurship. Download to see the full details of my technical skills, project achievements, and professional journey.",
             buttons: {
-                view: "📄 View Resume",
+                view: "📄 View Online Resume",
                 download: "⬇️ Download PDF"
             }
         },
